@@ -1,6 +1,9 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Icon, IconButton } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+import WbSunnyIcon from "@mui/icons-material/WbSunny";
 
 function App() {
   const [weatherData, setWeatherData] = useState(null);
@@ -23,33 +26,36 @@ function App() {
         );
 
         setWeatherData(res.data);
+        console.log(res.data);
       } catch (error) {
         setError(error);
       } finally {
         setLoading(false);
       }
     };
-
     fetchWatherData();
+    // eslint-disable-next-line
   }, []);
 
   if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error!: {error.message}</div>;
+  if (error) return <div>Error: {error.message}</div>;
 
   return (
     <div className="App">
-      <h1>Weather in {weatherData.name}</h1>
-      <p>Temperature: {weatherData.main.temp}°C</p>
-      <p>Condition: {weatherData.weather[0].description}</p>
+      <div className="search-form">
+        <input type="text" value={city} onChange={inputCity} />
+        <IconButton onClick={() => setCity(city)}>
+          <SearchIcon />
+        </IconButton>
+      </div>
+      <h1 className="location">Weather in {weatherData.name}</h1>
+      <p className="temperature">Temperature: {weatherData.main.temp}°C</p>
+      <p className="condition">
+        Condition: {weatherData.weather[0].description}
+      </p>
       <br />
-      <p>都市を選んでください。</p>
-      <input
-        type="text"
-        value={city}
-        onChange={inputCity}
-        placeholder="都市を入力してください"
-      />
-      <button onClick={setWeatherData}>API Call</button>
+
+      <WbSunnyIcon className="weather-icon" />
     </div>
   );
 }
