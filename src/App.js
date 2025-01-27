@@ -19,7 +19,7 @@ function App() {
   const apiKey = process.env.REACT_APP_OPENWEATHERMAP_API_KEY;
 
   useEffect(() => {
-    const fetchWatherData = async () => {
+    const fetchWeatherData = async () => {
       try {
         const res = await axios.get(
           `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`
@@ -32,7 +32,7 @@ function App() {
         setLoading(false);
       }
     };
-    fetchWatherData();
+    fetchWeatherData();
     // eslint-disable-next-line
   }, []);
 
@@ -40,6 +40,9 @@ function App() {
   if (error) return <div>Error: {error.message}</div>;
 
   const weatherCondition = weatherData.weather[0].main;
+  console.log(weatherData.weather[0].main);
+  console.log("======");
+  console.log(weatherCondition);
 
   const sunAnimation = {
     loop: true,
@@ -53,7 +56,7 @@ function App() {
   const rainAnimation = {
     loop: true,
     autoplay: true,
-    animationData: sunIcon,
+    animationData: rainIcon,
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice",
     },
@@ -62,13 +65,13 @@ function App() {
   return (
     <div className="App">
       <p className="location">{weatherData.name}</p>
-
-      <p className="condition">{weatherData.weather[0].main}</p>
-      {weatherCondition == "Rain" ? (
-        <Lottie options={sunAnimation} height={400} width={400} />
-      ) : (
-        <Lottie options={rainAnimation} height={400} width={400} />
-      )}
+      <div className="weather-conodition">
+        {weatherCondition == "Rain" ? (
+          <Lottie options={rainAnimation} height={400} width={400} />
+        ) : (
+          <Lottie options={rainAnimation} height={400} width={400} />
+        )}
+      </div>
       <p className="temperature">{weatherData.main.temp}°C</p>
     </div>
   );

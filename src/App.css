@@ -15,3 +15,7 @@
 .temperature {
   font-size: 30px;
 }
+
+.weather-container {
+  margin: 40px;
+}
