@@ -4,7 +4,7 @@
 
 ## Preview
 
-<div style="text-align: center;"><img src="/src/assets/preview.png" width="300px"></div>
+<img src="/src/assets/preview.png" width="300px">
 
 ## Development Environment
 
