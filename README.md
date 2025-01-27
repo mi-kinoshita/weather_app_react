@@ -1,12 +1,10 @@
-# WEATHER APP 🌤️ Made with Flutter
+# WEATHER APP 🌤️ Made with React
 
 <img src="https://img.shields.io/badge/-React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB">
 
-## Overview
-
 ## Preview
 
-<img src="/src/assets/preview.png" width="300px">
+<div style="text-align: center;"><img src="/src/assets/preview.png" width="300px"></div>
 
 ## Development Environment
 
