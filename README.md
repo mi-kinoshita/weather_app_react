@@ -6,11 +6,11 @@
 
 ## Preview
 
-<img src="/src/assets/preview.png">
+<img src="/src/assets/preview.png" width="300px">
 
 ## Development Environment
 
-React [19.0.0]
+React [19.0.0]<br />
 VS Code [1.96.4]
 
 ## Contributing
