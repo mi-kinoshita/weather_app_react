@@ -1,9 +1,9 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Icon, IconButton } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
-import WbSunnyIcon from "@mui/icons-material/WbSunny";
+import Lottie from "react-lottie";
+import sunIcon from "./lotties/sun.json";
+import rainIcon from "./lotties/rain.json";
 
 function App() {
   const [weatherData, setWeatherData] = useState(null);
@@ -24,7 +24,6 @@ function App() {
         const res = await axios.get(
           `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`
         );
-
         setWeatherData(res.data);
         console.log(res.data);
       } catch (error) {
@@ -40,22 +39,37 @@ function App() {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
+  const weatherCondition = weatherData.weather[0].main;
+
+  const sunAnimation = {
+    loop: true,
+    autoplay: true,
+    animationData: sunIcon,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+
+  const rainAnimation = {
+    loop: true,
+    autoplay: true,
+    animationData: sunIcon,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+
   return (
     <div className="App">
-      <div className="search-form">
-        <input type="text" value={city} onChange={inputCity} />
-        <IconButton onClick={() => setCity(city)}>
-          <SearchIcon />
-        </IconButton>
-      </div>
-      <h1 className="location">Weather in {weatherData.name}</h1>
-      <p className="temperature">Temperature: {weatherData.main.temp}°C</p>
-      <p className="condition">
-        Condition: {weatherData.weather[0].description}
-      </p>
-      <br />
+      <p className="location">{weatherData.name}</p>
 
-      <WbSunnyIcon className="weather-icon" />
+      <p className="condition">{weatherData.weather[0].main}</p>
+      {weatherCondition == "Rain" ? (
+        <Lottie options={sunAnimation} height={400} width={400} />
+      ) : (
+        <Lottie options={rainAnimation} height={400} width={400} />
+      )}
+      <p className="temperature">{weatherData.main.temp}°C</p>
     </div>
   );
 }

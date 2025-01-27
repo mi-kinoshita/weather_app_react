@@ -1,51 +1,17 @@
 .App {
   place-self: center;
   padding: 40px;
-  background-color: #EFE9E6;
+  background-color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.weather-info {
-  align-items: center;
-  padding: 20px 0;
-  background-color: #CBA890;
-}
-
-.search-form {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-
-.search-form input {
-  padding: 10px;
-  font-size: 1.2em;
-  border: none;
-  outline: none;
-  color: #A6B5A5;
-  background-color: #fff;
-  font-size: 18px;
-}
-
-.weather-icon {
-  width: 100px;
-  height: 100px;
-  color: orange;
-}
-
-.tempereture {
-  font-color: #262724;
-  font-size: 2em;
-}
-
-.condition {
-  font-color: #262724;
-  font-size: 1.5em;
+  font-family: 'Roboto', sans-serif;
 }
 
 .location {
-  font-color: #262724;
-  font-size: 1.5em;
+  font-size: 20px;
+}
+
+.temperature {
+  font-size: 30px;
 }
